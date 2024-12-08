@@ -7,3 +7,5 @@ class ProdutoAdmin(admin.ModelAdmin):
     search_fields = ('codigo', 'nome')
     list_filter = ('data_criacao',)
     ordering = ('-data_criacao',)
+
+admin.site.register(Produto, ProdutoAdmin)
