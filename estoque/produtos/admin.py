@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Produto
+from .models import Produto, Categoria, Fornecedor
 
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
@@ -8,4 +8,12 @@ class ProdutoAdmin(admin.ModelAdmin):
     list_filter = ('data_criacao',)
     ordering = ('-data_criacao',)
 
-admin.site.register(Produto, ProdutoAdmin)
+@admin.register(Categoria)
+class CategoriaAdmin(admin.ModelAdmin):
+    list_display = ('nome',)
+    search_fields = ('nome',)
+
+@admin.register(Fornecedor)
+class FornecedorAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'cnpj', 'telefone', 'email')
+    search_fields = ('nome', 'cnpj')
